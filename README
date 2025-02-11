@@ -1,0 +1,65 @@
+
+README - Estrutura do Programa
+Nesse código é extremamente necessario que as imagens da base de referencia esteja no o diretorio ./base
+
+Arquivos principais:
+main.c:
+
+Função principal (main): O ponto de entrada do programa, onde são processados os argumentos da linha de comando usando getopt.
+
+Funções de processamento:
+processar_imagens: Realiza o processamento de todas as imagens em um diretório específico, aplicando o cálculo de LBP.
+
+encontrar_arquivo_proximo: Calcula a distância entre histogramas LBP e encontra a imagem mais próxima de uma imagem de referência.
+
+salva_imagens: Salva imagens após o cálculo do LBP em formato PGM.
+
+lbp.c:
+
+Funções para o cálculo de LBP:
+calcular_lbp: Aplica a técnica LBP a uma imagem, gerando uma nova imagem com os valores LBP.
+
+gerar_histograma: Normaliza o histograma de uma imagem LBP, facilitando a comparação entre imagens.
+
+Funções de leitura e escrita de arquivos binários:
+
+salvar_lbp: Salva o vetor LBP em um arquivo binário.
+
+carregar_lbp: Carrega um arquivo binário de LBP já existente.
+
+Funções auxiliares:
+desalocar_imagem: Libera a memória alocada para armazenar uma imagem.
+desalocar_histograma: Libera a memória de um histograma.
+
+
+Funções para manipulação de imagens PGM:
+
+ler_imagem_pgm: Lê uma imagem no formato PGM (tanto em formato "P2" quanto "P5"), alocando a memória necessária e preenchendo os dados.
+
+salvar_imagem_pgm: Salva uma imagem em formato PGM, utilizando os formatos "P2" ou "P5".
+
+Funções para ignorar comentaris:
+ignorar_comentarios: Ignora linhas de comentários no arquivo PGM.
+
+
+Outras funções:
+
+distancia_euclidiana: Calcula a distância euclidiana entre dois histogramas LBP.
+
+carregar_histograma: Carrega um histograma salvo em um arquivo.
+
+salvar_histograma: Salva um histograma em um arquivo binário.
+
+
+Estrutura de Diretórios e Arquivos:
+
+base/: Diretório padrão onde as imagens de entrada são armazenadas e onde os resultados (histogramas LBP e imagens processadas) são salvos.
+lbp.c: Contém funções específicas para calcular e salvar imagens LBP.
+utils.c: Funções auxiliares para gerenciamento de memória e cálculos de distância entre histogramas.
+Argumentos de Linha de Comando:
+O programa aceita os seguintes parâmetros de linha de comando usando getopt:
+
+-d <diretório>: Processa todas as imagens dentro de um diretório específico. Ele aplica a técnica LBP em todas as imagens e salva os resultados.
+-i <imagem>: Processa uma única imagem específica (no formato PGM), calcula o LBP e salva a imagem resultante.
+
+Nesse código é extremamente necessario que as imagens da base de referencia esteja no o diretorio ./base pois meu codigo inicia ja usando ele e em todo momento eçe eh necessario inclusive elaborei um solucao que usa define ./base, fiz assim pois foi o que entendi do documento do trabalho, porem nao tenho certeza que esteja certo. Infelizmente, por causa de algumas funcoes que aloca memoria, esta com problemas de vazamento de memoria e esta guardando memoria que nao foi usada, tentei resolver ate o prazo mas nao consegui seria necessario mudar muita estrutura,mas nao tive tempo abil para tal.
